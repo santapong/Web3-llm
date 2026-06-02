@@ -12,3 +12,9 @@ lib/
 
 # Build setup artifact
 files (6).zip
+
+# Node (resolver/)
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*

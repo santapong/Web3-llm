@@ -9,16 +9,16 @@ import {BountyEscrow} from "../src/BountyEscrow.sol";
 contract BountyEscrowTest is Test {
     BountyEscrow escrow;
 
-    address owner    = address(this);   // deployer = owner = resolver (Phase 0 simplest)
-    address funder   = makeAddr("funder");
+    address owner = address(this); // deployer = owner = resolver (Phase 0 simplest)
+    address funder = makeAddr("funder");
     address claimant = makeAddr("claimant");
     address stranger = makeAddr("stranger");
 
     bytes32 constant SPEC = bytes32(uint256(1));
-    bytes32 constant PR   = bytes32(uint256(2));
+    bytes32 constant PR = bytes32(uint256(2));
 
     function setUp() public {
-        escrow = new BountyEscrow(owner);   // resolver = this contract
+        escrow = new BountyEscrow(owner); // resolver = this contract
         vm.deal(funder, 10 ether);
         vm.deal(stranger, 10 ether);
     }
@@ -30,7 +30,7 @@ contract BountyEscrowTest is Test {
         vm.prank(funder);
         uint256 id = escrow.createBounty{value: 1 ether}(claimant, SPEC, PR);
 
-        (address f, address c, uint256 amt, , , BountyEscrow.Status status) = escrow.bounties(id);
+        (address f, address c, uint256 amt,,, BountyEscrow.Status status) = escrow.bounties(id);
         assertEq(f, funder, "funder wrong");
         assertEq(c, claimant, "claimant wrong");
         assertEq(amt, 1 ether, "amount wrong");
@@ -49,7 +49,7 @@ contract BountyEscrowTest is Test {
 
         assertEq(claimant.balance, claimantBefore + 1 ether, "claimant not paid in full");
         assertEq(address(escrow).balance, 0, "escrow should be empty");
-        (, , , , , BountyEscrow.Status status) = escrow.bounties(id);
+        (,,,,, BountyEscrow.Status status) = escrow.bounties(id);
         assertEq(uint256(status), uint256(BountyEscrow.Status.Resolved), "should be Resolved");
     }
 
@@ -95,10 +95,10 @@ contract BountyEscrowTest is Test {
     // 7. only the owner can rotate the resolver key
     function test_SetResolver_OnlyOwner() public {
         vm.prank(stranger);
-        vm.expectRevert();                 // OZ Ownable: OwnableUnauthorizedAccount
+        vm.expectRevert(); // OZ Ownable: OwnableUnauthorizedAccount
         escrow.setResolver(stranger);
 
-        escrow.setResolver(claimant);      // owner (this contract) can
+        escrow.setResolver(claimant); // owner (this contract) can
         assertEq(escrow.resolver(), claimant, "owner could not set resolver");
     }
 

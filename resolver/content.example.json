@@ -1,0 +1,4 @@
+{
+  "0x37b699d4c3085193f57e30f289de77cd8cb4954c6eeda390334a4f2cdc2c5cac": "Acceptance criteria:\n1. Add a GET /health HTTP endpoint.\n2. It returns status 200 and JSON {\"status\":\"ok\"}.\n3. Include a test covering the 200 response.",
+  "0x838aa8afea7b6453fcc227ec7b946c52f989ab1f52817a709e79951c27737d95": "PR #42: add health check\n\nAdds a GET /health route that returns 200 with {\"status\":\"ok\"}, plus a unit test asserting the 200 response."
+}
