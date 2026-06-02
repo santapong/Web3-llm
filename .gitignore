@@ -1,0 +1,14 @@
+# Foundry
+out/
+cache/
+broadcast/
+
+# Dependencies (installed via `forge install`)
+lib/
+
+# Env / secrets
+.env
+.env.*
+
+# Build setup artifact
+files (6).zip
