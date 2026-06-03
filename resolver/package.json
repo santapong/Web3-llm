@@ -1,0 +1,27 @@
+{
+  "name": "web3-llm-resolver",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Off-chain LLM resolver for the Web3-llm BountyEscrow contracts: watches BountyCreated events, judges the PR against the spec with Claude, and submits the verdict on-chain.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "tsx src/index.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.1",
+    "dotenv": "^17.4.2",
+    "viem": "^2.52.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  }
+}
