@@ -5,7 +5,7 @@ Owned by the `research-lead` agent. Each row links to that agent's full report o
 
 **Legend:** 🟡 running · 🟢 done · 🔴 failed
 
-_Last updated: launch (all dispatched as background tasks)._
+_Last updated: **all 10 complete** — synthesized plan in `docs/FEATURE_PLAN.md`._
 
 | # | Research area | Roadmap fit | Status | Report | Headline finding |
 |---|---|---|---|---|---|
@@ -15,11 +15,11 @@ _Last updated: launch (all dispatched as background tasks)._
 | 04 | Automated settlement keepers | P1 | 🟢 done | `04-settlement-keepers.md` | **P1 blocker.** Add a ~100-line self-hosted viem cron `Settler` (`resolver/src/settler.ts`) calling the already-permissionless `settle(id)`; Gelato as the P3 upgrade. Effort S, priority 1. |
 | 05 | Multi-resolver quorum & ensemble | P4 | 🟢 done | `05-resolver-quorum.md` | **P4 deferral is correct** (v1 already ≈ UMA optimistic oracle; ~1.5% disputed). Add a *dormant* `EnsembleJudge` (3-sample self-consistency, `ENSEMBLE_RUNS`) now, activate at P2/P3; multi-model jury at P3; on-chain quorum stays P4. Effort S/M/L. |
 | 06 | Frontend dApp | P3 | 🟢 done | `06-frontend-dapp.md` | Thin Next.js 15 + RainbowKit/wagmi/viem dApp (5 screens) on Vercel; import resolver's `abi.ts` directly for end-to-end types; read reasoning from `VerdictProposed` logs; no subgraph needed. Effort M, priority 2 — **No-Go until P2 passes**. |
-| 07 | Prompt-injection & robustness | cross-cutting | 🟡 running | `07-adversarial-robustness.md` | — |
-| 08 | Decentralized / optimistic arbitration | P4 | 🟡 running | `08-decentralized-arbitration.md` | — |
-| 09 | On-chain fee & treasury (monetization) | monetization | 🟡 running | `09-fee-treasury.md` | — |
-| 10 | L2 deployment, gas & gasless UX | P1/P3 | 🟡 running | `10-l2-gasless.md` | — |
+| 07 | Prompt-injection & robustness | cross-cutting | 🟢 done | `07-adversarial-robustness.md` | Forced `tool_choice` already locks output *shape*; gaps: no spotlighting delimiters, no pre-screen, no injection eval cases. Ship **L1 delimiters + L4 adversarial eval cases at P0** (near-zero cost), haiku pre-screen + promptfoo red-team at P1. Effort S→M, priority 2. |
+| 08 | Decentralized / optimistic arbitration | P4 | 🟢 done | `08-decentralized-arbitration.md` | **Kleros ERC-792** (Software Dev subcourt, real appeals, ERC-1497 evidence) > UMA (token voters rubber-stamp). But **defer to P4**: single arbiter → team multisig at P3 (`setArbiter`, no code), wire Kleros only if disputes occur at volume. Effort M, priority 2, **No-Go now**. |
+| 09 | On-chain fee & treasury (monetization) | monetization | 🟢 done | `09-fee-treasury.md` | ~25 lines in `_payout()`: `feeBps`/`feeRecipient`/immutable `MAX_FEE_BPS=500`; fee exits atomically so solvency invariant holds. Deploy **inert (feeBps=0)** now, flip at P3 after P0 gate. Recipient = 2-of-3 Safe. Effort S, priority 2. |
+| 10 | L2 deployment, gas & gasless UX | P1/P3 | 🟢 done | `10-l2-gasless.md` | **Deploy to Base** (Base Sepolia at P1 → mainnet at P3): OP Stack = zero code changes, first-party Coinbase Paymaster, sub-cent fees. Swap 16 `require` strings → custom errors (S). Gasless funder UX via `permissionless` + CDP Paymaster at P3. Priority 1/2/3. |
 
-**Progress: 6 / 10 done.**
+**Progress: 10 / 10 done. ✅**
 
 When all rows are 🟢, the synthesized cross-cutting plan lands in `docs/FEATURE_PLAN.md`.
