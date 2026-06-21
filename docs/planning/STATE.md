@@ -49,6 +49,10 @@ nothing downstream ships until the judge is proven.
 | Agent | Round 1 (propose) | Round 2 (review) |
 |---|---|---|
 | tech-lead | 🟢 done | 🟢 done |
+<!-- SYNTHESIS COMPLETE: tech-lead merged both rounds into docs/planning/BUILD_PLAN.md (2026-06-21). -->
+<!-- Note: OQ3 follows the accepted Decision Log R2-2 (ADDITIVE FeeCharged; Settled unchanged), -->
+<!-- which both implementers ratified, superseding the tech-lead R2 note's "modify Settled". -->
+
 | contract-engineer | 🟢 done | 🟢 done |
 | resolver-engineer | 🟢 done | 🟢 done |
 | eval-engineer | 🟢 done | 🟢 done |
